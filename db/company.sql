@@ -6,11 +6,16 @@ CREATE TABLE company (
   lastsale DOUBLE PRECISION,
   marketcap VARCHAR(15),
   sector VARCHAR(40),
+  industry VARCHAR(100),
   summarylink VARCHAR(100) NOT NULL
 );
 
 /* use COPY command under psql to load data from companylist.txt into table company because of no root user privillege */
 yl576=> \copy company(symbol, companyname, lastsale, marketcap, sector, industry, summarylink) from '~/companylist.txt';
+
+/* drop column industry due to similarity with sector and it have very ambiguous classfication.
+It's supposed to a sub-catagory of sector but there are many instances same industry being associated with two sectors */
+ALTER TABLE company DROP COLUMN industry;
 
 /* add a unique constraint to table company (column symbol)
 and the symbol column will be referenced by table nasdaq100component */
