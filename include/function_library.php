@@ -1,6 +1,6 @@
 <?php
 include_once 'include/error_reporting.php';
-require_once 'include/form_processing.php';
+require_once 'include/index_processing.php';
 
 function displayResults($db_result) {
     $s = "</td><td>";

@@ -1,6 +1,6 @@
 <?php
 include_once 'include/error_reporting.php';
-require_once 'include/form_processing.php';
+require_once 'include/index_processing.php';
 require_once 'include/function_library.php';
 
 ?>
@@ -11,13 +11,14 @@ require_once 'include/function_library.php';
         <head>
             <title>Nasdaq Company Organizer</title>
             <link rel="stylesheet" href="assets/css/index.css" type="text/css" />
+            <script type="text/javascript" src="assets/js/index.js"></script>
         </head>
         <body>
             <div id="my-header">
                 <h1>Welcome to Nasdaq company organizer</h1>
             </div>
             <div id="user-guide">
-                <p>Search for a public company listed on <a href="www.nasdaq.com">Nasdaq</a> by the following conditions:</p>
+                <p>Search for a public company listed on <a href="https://www.nasdaq.com" target='_blank'>Nasdaq</a> by the following conditions:</p>
                 <ul id="search-con">
                     <li>Company symbol (e.g., AAPL for Apple Inc.)</li>
                     <li>Company name (keyword acceptable)</li>
@@ -31,6 +32,7 @@ require_once 'include/function_library.php';
                     <li>Bounded search: use a combination of stock price, market cap and sector to 
                     return all companies satisfying specified conditions.</li>
                 </ul>
+                <button id="admin-btn">Administrator Entrance</button>
             </div>
     
             <div id="search-form">
@@ -64,7 +66,7 @@ require_once 'include/function_library.php';
                     </select>
                     <br>
                     <div id="btn">
-                        <input type="submit" id="search-btn" value="Search"/>
+                        <input type="submit" id="search-btn" name="searchsubmit" value="Search"/>
                     </div>
                     <br><br>
                 </form>
@@ -79,7 +81,7 @@ require_once 'include/function_library.php';
                             displayResults($result);
                             echo "</table>";
                         } else {
-                            echo "No matched company could be found.\n";
+                            echo "No matched company could be found.<br>";
                         }
                     }
                 ?>

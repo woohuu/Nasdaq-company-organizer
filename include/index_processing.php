@@ -2,7 +2,7 @@
 include_once 'include/error_reporting.php';
 require_once 'include/function_library.php';
 /*
-// Database credentials
+// Database credentials on aws dev env
 $host = "host = 127.0.0.1";
 $port = "port = 5432";
 $dbname = "dbname = companylist";
@@ -11,6 +11,7 @@ $credentials = "user = ec2-user password = test1234";
 // Establish a connection with Postgresql
 $db = pg_connect( "$host $port $dbname $credentials" );  
 */
+
 $db = pg_connect(getenv("DATABASE_URL")); //Heroku db connection
 
 if(!$db) {
@@ -32,7 +33,7 @@ $result = '';
 
 // Form processing flag
 $isProcessingForm = false;
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (isset($_POST['searchsubmit'])) {
     $isProcessingForm = true;
 }
 
