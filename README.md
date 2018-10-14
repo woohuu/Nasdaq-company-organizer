@@ -19,6 +19,7 @@ Large amount of time was devoted to develop, test and debug the logical layer th
 </p>
 
 Web App Deployment
+
 This project web app has been deployed to heroku. Please visit https://nasdaq-company-organizer.herokuapp.com/.
 The web app will be rendered with CSS and JavaScript and more functions will be added in the near future.
 
