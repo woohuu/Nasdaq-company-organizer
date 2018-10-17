@@ -16,7 +16,8 @@ $isUsearchFormSubmitted = false;
 if (isset($_POST['usearchsubmit'])) {
     $isUsearchFormSubmitted = true;
 }
-// search found flag
+
+// searchsubmit form submission flag
 if ($isUsearchFormSubmitted) {
     $symbol2 = $_POST['symbol2'];
     if ($symbol2) {
@@ -32,7 +33,6 @@ if ($isUsearchFormSubmitted) {
             $marketcap1 = trim($row['marketcap'], '$BM');
             $capunit = substr($row['marketcap'], -1);
             $sector1 = $row['sectorid'];
-            $isRecordRetrieved = true;
         } else {
             echo "No matched company could be found.";
         }
@@ -41,6 +41,7 @@ if ($isUsearchFormSubmitted) {
     }
 }
 
+// save-form submission flag
 $isSaveFormSubmitted = false;
 if (isset($_POST['savesubmit'])) {
     $isSaveFormSubmitted = true;
@@ -93,9 +94,13 @@ if ($isSaveFormSubmitted) {
 if (isset($_POST['deletesubmit'])) {
     $symbol1 = $_POST['symbol1'];
     if ($symbol1) {
+        // check if $symbol1 is an existing symbol in table company_new
         $symbol1U = strtoupper($symbol1);
-        if(pg_query($db, "delete from company_new where symbol = '$symbol1U'")) {
-            echo "'$symbol1U' company record has been deleted.";
+        $searchForSymbol1 = "select * from company_new where symbol = '$symbol1U'";
+        if (pg_num_rows(pg_query($db, $searchForSymbol1)) > 0) {
+            if(pg_query($db, "delete from company_new where symbol = '$symbol1U'")) {
+                echo "'$symbol1U' company record has been deleted.";
+            }
         } else {
             echo "No matched company could be found.";
         }

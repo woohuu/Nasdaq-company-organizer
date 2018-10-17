@@ -7,13 +7,13 @@ require_once 'include/function_library.php';
 
 <!DOCTYPE html>
 <html>
-    <div id="wrapper">
-        <head>
-            <title>Nasdaq Company Organizer</title>
-            <link rel="stylesheet" href="assets/css/index.css" type="text/css" />
-            <script type="text/javascript" src="assets/js/index.js"></script>
-        </head>
-        <body>
+    <head>
+        <title>Nasdaq Company Organizer</title>
+        <link rel="stylesheet" href="assets/css/index.css" type="text/css" />
+        <script type="text/javascript" src="assets/js/index.js"></script>
+    </head>
+    <body>
+        <div id="wrapper">
             <div id="my-header">
                 <h1>Welcome to Nasdaq company organizer</h1>
             </div>
